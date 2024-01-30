@@ -16,6 +16,16 @@ Next update will include (more) thorough error-checking and GUI improvements.
 
 ---
 
+Public Domain files I used:
+
+Icon file: https://commons.wikimedia.org/wiki/File:Pok%C3%A9mon_Water_Type_Icon.svg
+
+Earth test image: https://commons.wikimedia.org/wiki/File:ISS046-E-36381_-_View_of_Earth.jpg
+
+Paris test image: https://commons.wikimedia.org/wiki/File:Paris_-_Eiffelturm_und_Marsfeld2.jpg
+
+---
+
 ### Documentation:
 
 _Printed via `help(WatermarkItGui)`:_
