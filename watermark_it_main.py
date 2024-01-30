@@ -6,7 +6,7 @@ from static.watermark_it_data import *
 
 
 class WatermarkItGui:
-    """A simple GUI application for creating watermarked images using Tkinter.
+    """A simple GUI application for creating watermarked images with Tkinter(front) and PIL(back).
 
     Attributes:
         root (Tk): The main Tkinter window.
@@ -347,7 +347,7 @@ class WatermarkItGui:
         self.image_obj.font_size = self.font_size_scale.get()
         self.image_obj.rows = self.rows_scale.get()
         self.image_obj.cols = self.columns_scale.get()
-        self.image_obj.alpha = self.convert_opacity(self.opacity_scale.get())
+        self.image_obj.opacity = self.convert_opacity(self.opacity_scale.get())
         self.image_obj.create_watermark()
 
 

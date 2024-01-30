@@ -7,10 +7,11 @@ from static.watermark_it_data import *
 
 class PilImage:
     """A class for adding watermarks to images using PIL.
+    Use with watermark_it_main.py's Tkinter GUI.
 
     Attributes:
         color (tuple): RGB color tuple for the watermark text.
-        alpha (int): Alpha value for transparency in the watermark.
+        opacity (int): Alpha value for transparency in the watermark.
         font_size (int): Font size of the watermark text.
         font_name (str): Font type for the watermark text.
         rows (int): Number of rows for the watermark.
@@ -32,33 +33,11 @@ class PilImage:
         self.text = text
         self.path_output = path_output
         self.color = (255, 255, 255)
-        self.alpha = 96
+        self.opacity = 96
         self.font_size = 40
         self.font_name = "arial"
         self.rows = 20
         self.cols = 6
-
-    def change_color(self, color: str = "white"):
-        """Set the color of the watermark text.
-
-        Args:
-            color (str): Desired color of watermark text. Defaults to "white".
-        """
-        if not color or color != "black":
-            self.color = (255, 255, 255)
-        else:
-            self.color = (0, 0, 0)
-
-    def change_font_size(self, font_size: int):
-        """Set the font size of watermark text.
-
-        Args:
-            :var font_size: Desired size of watermark text. :type: int, required
-        """
-        if font_size and type(font_size) is int and 8 <= font_size <= 72:
-            self.font_size = font_size
-        else:
-            self.font_size = 40
 
     @staticmethod
     def __dict_vals_to_list(*args: dict):
@@ -71,51 +50,6 @@ class PilImage:
         for i in args:
             res_list.extend(list(i.values()))
         return res_list
-
-    def change_font_name(self, font_name: str = "arial"):
-        """Get Tkinter font name from readable user font name.
-
-        Args:
-            font_name (str, optional): Desired font name. Defaults to "arial".
-        """
-        if type(font_name) is str and font_name:
-            font = fonts_reg[font_name]
-        else:
-            font = "arial"
-        self.font_name = font
-
-    def change_rows(self, rows: int):
-        """Set the number of watermark rows.
-
-        Args:
-            :var rows: Number of watermark rows. type: int, required
-        """
-        if rows and type(rows) is int:
-            self.rows = rows
-        else:
-            self.rows = 20
-
-    def change_cols(self, cols: int):
-        """Set the number of watermark rows.
-
-        Args:
-            :var cols: Number of watermark rows. type: int, required
-        """
-        if cols and type(cols) is int:
-            self.cols = cols
-        else:
-            self.cols = 6
-
-    def change_alpha(self, alpha: int):
-        """Allows user to adjust opacity of watermark text.
-
-        Args:
-            :var alpha: Number of watermark rows. type: int, required
-        """
-        if type(alpha) is not int or not alpha:
-            self.alpha = 128
-        else:
-            self.alpha = alpha
 
     def draw_text(self, draw_obj: ImageDraw, base_size: tuple, font: ImageFont):
         """Draw watermark text on a PIL image.
@@ -136,7 +70,7 @@ class PilImage:
                 draw_obj.text((x, y),
                               self.text,
                               font=font,
-                              fill=(self.color[0], self.color[1], self.color[2], self.alpha))
+                              fill=(self.color[0], self.color[1], self.color[2], self.opacity))
 
     def create_watermark(self):
         """Build PIL.Image object and overlay watermark with draw_text method."""
@@ -157,5 +91,5 @@ class PilImage:
 
 
 if __name__ == "__main__":
-    water = PilImage("../static/paris_test.jpg", "©2024")
+    water = PilImage("../static/paris_test.jpg", "PIL Module")
     water.create_watermark()
