@@ -10,6 +10,8 @@ Run via the `watermark_it_main.py` along with your favorite Python interpreter, 
 
 I've got it working, basically, but more work needs to be done to ensure functionality and a good UX.
 
+Windows portable .exe to be added shortly.
+
 Next update will include (more) thorough error-checking and GUI improvements.
 
 ---
